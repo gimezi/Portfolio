@@ -1,83 +1,66 @@
-import { useEffect, useRef, useState } from "react"
+import { useRef, useState } from "react"
 import Navbar from "./Components/NavBar"
-import Main from "./Templates/Main"
-import AboutMe from "./Templates/AboutMe"
-import Skill from "./Templates/Skill"
-import Projects from "./Templates/Projects"
-import Contact from "./Templates/Contact"
-
-type tabType = 'AboutMe'|'Skill'|'Project'|'Contact'
+import Main from "./pages/Main"
+import AboutMe from "./pages/AboutMe"
+import Skill from "./pages/Skill"
+import Projects from "./pages/Projects"
+import Contact from "./pages/Contact"
+import ScrollObserver from "./Hooks/ScrollObserver"
+import { tabType, tabRefType } from "./types/scrolltypes"
+import { Button } from "@nextui-org/react"
 
 function App() {
-  const [selectedTab, setSelectedTab] = useState<tabType|null>(null) 
+  const [selectedTab, setSelectedTab] = useState<tabType | null>(null)
 
-  const tabRef = {
+  const tabRef: tabRefType = {
+    'Main': useRef<HTMLDivElement>(null),
     'AboutMe': useRef<HTMLDivElement>(null),
     'Skill': useRef<HTMLDivElement>(null),
-    'Project' : useRef<HTMLDivElement>(null),
-    'Contact' : useRef<HTMLDivElement>(null)
+    'Project': useRef<HTMLDivElement>(null),
+    'Contact': useRef<HTMLDivElement>(null)
   }
 
-  const HandleClick = (item :tabType) => {
+  const HandleClick = (item: tabType) => {
     setSelectedTab(item)
-    tabRef[item].current?.scrollIntoView({ behavior: 'smooth' })
+    tabRef[item].current?.scrollIntoView({ behavior: 'smooth'})
   }
 
-  useEffect(() => {
-    const observers: { [key in tabType]: IntersectionObserver } = {
-      'AboutMe': new IntersectionObserver((entries) => {
-        if (entries[0].isIntersecting) {
-          setSelectedTab('AboutMe')
-        }
-      }),
-      'Skill': new IntersectionObserver((entries) => {
-        if (entries[0].isIntersecting) {
-          setSelectedTab('Skill')
-        }
-      }),
-      'Project': new IntersectionObserver((entries) => {
-        if (entries[0].isIntersecting) {
-          setSelectedTab('Project')
-        }
-      }),
-      'Contact': new IntersectionObserver((entries) => {
-        if (entries[0].isIntersecting) {
-          setSelectedTab('Contact')
-        }
-      })
-    }
+  const handleSelectedTab = (tab: tabType) => {
+    setSelectedTab(tab)
+  }
 
-    Object.keys(tabRef).forEach((key) => {
-      if (tabRef[key as tabType].current) {
-        observers[key as tabType].observe(tabRef[key as tabType].current ? tabRef[key as tabType].current)
-      }
-    })
+  ScrollObserver({ tabRef, handleSelectedTab })
 
-    return () => {
-      Object.values(observers).forEach((observer) => observer.disconnect())
-    }
-  }, [])
-  
   return (
     <div className="dark:bg-[#343a40]">
-      <Navbar 
+      <Navbar
         selectedTab={selectedTab}
         HandleClick={HandleClick}
       />
-      <div style={{height: '100vh'}}>
-        <Main/>
+      <Button 
+        isIconOnly
+        size="lg"
+        onClick={() => HandleClick('Main')} 
+        className="fixed bottom-[3vw] right-[2vh]"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
+          <path strokeLinecap="round" strokeLinejoin="round" d="m4.5 15.75 7.5-7.5 7.5 7.5" />
+        </svg>
+      </Button>
+      <div ref={tabRef['Main']} className="h-[100vh] pt-[10vh]">
+        <Main />
       </div>
-      <div ref={tabRef['AboutMe']} style={{height: '100vh'}}>
-        <AboutMe/>
+      <div ref={tabRef['AboutMe']} style={{ height: '100vh' }}>
+        <AboutMe />
       </div>
-      <div ref={tabRef['Skill']} style={{height: '100vh'}}>
-        <Skill/>
+      <div ref={tabRef['Skill']} style={{ height: '100vh' }}>
+        <Skill />
       </div>
-      <div ref={tabRef['Project']} style={{height: '100vh'}}>
-        <Projects/>
+      <div ref={tabRef['Project']} style={{ height: '100vh' }}>
+        <Projects />
       </div>
-      <div ref={tabRef['Contact']} style={{height: '100vh'}}>
-        <Contact/>
+      <div ref={tabRef['Contact']} style={{ height: '100vh' }}>
+        <Contact />
       </div>
     </div>
   )

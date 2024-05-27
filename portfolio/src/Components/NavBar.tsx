@@ -1,4 +1,7 @@
-type tabType = 'AboutMe'|'Skill'|'Project'|'Contact'
+import { Switch } from "@nextui-org/react"
+import { useEffect, useState } from "react"
+
+type tabType = 'Main'|'AboutMe'|'Skill'|'Project'|'Contact'
 type functionType = (item:tabType) => void
 type PropsType = {
   selectedTab: tabType|null,
@@ -6,19 +9,56 @@ type PropsType = {
 }
 
 function Navbar({selectedTab, HandleClick}: PropsType) {
+  const [dark, setDark] = useState<boolean>(false)
+  
+  const toggleDarkMode = () => {
+    if (localStorage.getItem('theme') === 'dark') {
+      localStorage.removeItem('theme')
+      document.documentElement.classList.remove('dark')
+      setDark(false)
+    } else {
+      document.documentElement.classList.add("dark")
+      localStorage.setItem("theme", "dark")
+      setDark(true)
+    }
+  }
+  useEffect(() => {
+    if (localStorage.getItem('theme') === 'dark') {
+      document.documentElement.classList.add("dark")
+      setDark(true)
+    }
+  })
+
   return (
-    <div className="sticky top-0 flex text-center py-8 text-base lg:text-lg font-semibold">
-      <div className="w-[10%] lg:w-[55%]"/>
-      <div className="w-[20%] lg:w-[10%]" onClick={() => {HandleClick('AboutMe')}}>
+    <div 
+      className={`
+        fixed top-0 flex 
+        py-5 w-[100vw] 
+        bg-[#FFFFFFCC] dark:bg-[#FFFFFF33]
+        lg:py-8 lg:text-xl 
+        font-semibold text-center text-base
+      `}
+    >
+      <div className="w-[20%] ml-[0%] lg:ml-[2%] lg:w-[13%]">
+        <Switch
+          isSelected={dark}
+          size="lg"
+          color="default"
+          onClick={toggleDarkMode}
+        />
+        <p className="text-xs w-full text-gray-500 pr-[8px] dark:text-gray-300">{dark ? 'dark mode' : 'light mode'}</p>
+      </div>
+      <div className="w-[0%] lg:w-[45%]"/>
+      <div className="w-[20%] lg:w-[10%] my-auto" onClick={() => {HandleClick('AboutMe')}}>
         <p className={`${selectedTab==='AboutMe' ? 'text-[#00a6fb]': ''} cursor-pointer`}>About Me</p>
       </div>
-      <div className="w-[20%] lg:w-[10%]" onClick={() => {HandleClick('Skill')}}>
+      <div className="w-[20%] lg:w-[10%] my-auto" onClick={() => {HandleClick('Skill')}}>
         <p className={`${selectedTab==='Skill' ? 'text-[#00a6fb]': ''} cursor-pointer`}>Skill</p>
       </div>
-      <div className="w-[20%] lg:w-[10%]" onClick={() => {HandleClick('Project')}}>
+      <div className="w-[20%] lg:w-[10%] my-auto" onClick={() => {HandleClick('Project')}}>
         <p className={`${selectedTab==='Project' ? 'text-[#00a6fb]': ''} cursor-pointer`}>Projects</p>
       </div>
-      <div className="w-[20%] lg:w-[10%]" onClick={() => {HandleClick('Contact')}}>
+      <div className="w-[20%] lg:w-[10%] my-auto" onClick={() => {HandleClick('Contact')}}>
         <p className={`${selectedTab==='Contact' ? 'text-[#00a6fb]': ''} cursor-pointer`}>Contact</p>
       </div>
     </div>
