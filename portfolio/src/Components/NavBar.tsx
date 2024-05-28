@@ -33,11 +33,12 @@ function Navbar({selectedTab, HandleClick}: PropsType) {
     <div 
       className={`
         fixed top-0 flex 
-        py-5 w-[100vw] 
-        bg-[#FFFFFFCC] dark:bg-[#FFFFFF33]
-        lg:py-8 lg:text-xl 
+        py-3 w-[100vw] 
+        bg-[#FFFFFFCC] dark:bg-[#FFFFFF11]
+        lg:py-5 lg:text-xl 
         font-semibold text-center text-base
       `}
+      style={{fontFamily:'SEBANG_Gothic_Bold'}}
     >
       <div className="w-[20%] ml-[0%] lg:ml-[2%] lg:w-[13%]">
         <Switch
@@ -48,7 +49,7 @@ function Navbar({selectedTab, HandleClick}: PropsType) {
         />
         <p className="text-xs w-full text-gray-500 pr-[8px] dark:text-gray-300">{dark ? 'dark mode' : 'light mode'}</p>
       </div>
-      <div className="w-[0%] lg:w-[45%]"/>
+      <div className="w-[0%] lg:w-[40%]"/>
       <div className="w-[20%] lg:w-[10%] my-auto" onClick={() => {HandleClick('AboutMe')}}>
         <p className={`${selectedTab==='AboutMe' ? 'text-[#00a6fb]': ''} cursor-pointer`}>About Me</p>
       </div>
@@ -58,7 +59,7 @@ function Navbar({selectedTab, HandleClick}: PropsType) {
       <div className="w-[20%] lg:w-[10%] my-auto" onClick={() => {HandleClick('Project')}}>
         <p className={`${selectedTab==='Project' ? 'text-[#00a6fb]': ''} cursor-pointer`}>Projects</p>
       </div>
-      <div className="w-[20%] lg:w-[10%] my-auto" onClick={() => {HandleClick('Contact')}}>
+      <div className="w-[20%] lg:w-[10%] lg:mr-[5%] my-auto" onClick={() => {HandleClick('Contact')}}>
         <p className={`${selectedTab==='Contact' ? 'text-[#00a6fb]': ''} cursor-pointer`}>Contact</p>
       </div>
     </div>
