@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import ScrollText from '../Components/ScrollText'
+// import ScrollText from '../Components/ScrollText'
 
 const variants:{} = {
   hidden: { opacity: 0, y: 20 },
@@ -31,9 +31,9 @@ function Main() {
       color2: 'dark:text-[#E9ECEF]'
     }
   ]
-  
+
   return (
-    <div className='mt-[20vh] ml-0 lg:ml-[10%] overflow-hidden' style={{fontFamily:'SEBANG_Gothic_Bold'}}>
+    <div className='mt-[15vh] ml-0 lg:ml-[10%] overflow-hidden' style={{fontFamily:'SEBANG_Gothic_Bold'}}>
       <ul>
         {messages.map((message, idx) => (
             <motion.li
@@ -55,7 +55,7 @@ function Main() {
             </motion.li>
           ))}
       </ul>
-      <ScrollText baseVelocity={3}>🙋‍♀️ 저에 대한 소개를 시작해볼게요 </ScrollText>
+      {/* <ScrollText baseVelocity={3}>🙋‍♀️ 저에 대한 소개를 시작해볼게요 </ScrollText> */}
     </div>
   )
 }

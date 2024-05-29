@@ -37,7 +37,7 @@ export default function ScrollText({ children, baseVelocity = 100} :PropsType) {
   return(
     <motion.div 
       style={{ x }} 
-      className='overflow-hidden m-0 whitespace-nowrap flex flex-nowrap'
+      className='w-[100vw] overflow-hidden m-0 whitespace-nowrap flex flex-nowrap'
     >
       <span>{children}</span>
       <span className='mx-[50px]'></span>

@@ -47,19 +47,19 @@ function App() {
           <path strokeLinecap="round" strokeLinejoin="round" d="m4.5 15.75 7.5-7.5 7.5 7.5" />
         </svg>
       </Button>
-      <div ref={tabRef['Main']} className="h-[100vh] pt-[10vh]">
+      <div ref={tabRef['Main']} className="h-[100vh] pt-[15vh]">
         <Main />
       </div>
-      <div ref={tabRef['AboutMe']} style={{ height: '100vh' }}>
+      <div ref={tabRef['AboutMe']} className="h-[100vh] pt-[15vh]">
         <AboutMe />
       </div>
-      <div ref={tabRef['Skill']} style={{ height: '100vh' }}>
+      <div ref={tabRef['Skill']} className="h-[100vh] pt-[15vh]">
         <Skill />
       </div>
-      <div ref={tabRef['Project']} style={{ height: '100vh' }}>
+      <div ref={tabRef['Project']} className="h-[100vh] pt-[15vh]">
         <Projects />
       </div>
-      <div ref={tabRef['Contact']} style={{ height: '100vh' }}>
+      <div ref={tabRef['Contact']} className="h-[100vh] pt-[10vh]">
         <Contact />
       </div>
     </div>
