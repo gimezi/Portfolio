@@ -37,8 +37,9 @@ function Navbar({selectedTab, HandleClick}: PropsType) {
         bg-[#FFFFFFCC] dark:bg-[#FFFFFF11]
         lg:py-5 lg:text-xl 
         font-semibold text-center text-base
+        z-50
       `}
-      style={{fontFamily:'SEBANG_Gothic_Bold'}}
+      style={{fontFamily:'WavvePADO-Regular'}}
     >
       <div className="w-[20%] ml-[0%] lg:ml-[2%] lg:w-[13%]">
         <Switch

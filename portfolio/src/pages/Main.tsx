@@ -21,12 +21,12 @@ function Main() {
       color2: 'dark:text-[#ADB5BD]'
     }, 
     {
-      content: '인사말입니다',
+      content: '기록하며 도전하는 개발자',
       color1: 'text-[#495057]', 
       color2: 'dark:text-[#CED4DA]'
     },
     {
-      content: '쨔잔잔',
+      content: '김예지입니다.',
       color1: 'text-[#212529]',
       color2: 'dark:text-[#E9ECEF]'
     }
@@ -47,7 +47,8 @@ function Main() {
                 className={`
                   ${message.color1}
                   ${message.color2}
-                  text-[4.5rem]
+                  text-[3.5em]
+                  lg:text-[4.5em]
                 `}
               >
                 {message.content}
