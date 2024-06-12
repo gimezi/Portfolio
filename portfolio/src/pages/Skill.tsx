@@ -5,12 +5,11 @@ import Collaborations from "../Components/skill/Collaborations"
 function Skill() {
   return (
     <div className="w-full h-full px-5 lg:px-[10%]">
-      <p className="text-5xl underline underline-offset-8 tracking-wider mb-5" style={{fontFamily:'SEBANG_Gothic_Bold'}}>Skill</p>
-      <div className="w-full h-[85%] flex flex-col lg:flex-row border-2">
+      <p className="text-5xl underline underline-offset-8 tracking-wider mb-7" style={{fontFamily:'SEBANG_Gothic_Bold'}}>Skill</p>
+      <div className="w-full h-[85%] flex flex-col lg:flex-row">
         <div 
           className={`
             w-full h-[60%]
-            border-2
             lg:w-[60%] lg:h-full
           `}
         >
@@ -18,8 +17,8 @@ function Skill() {
         </div>
         <div
           className={`
-          w-full h-[40%] flex-row
-          border-2 flex
+          w-full h-[40%] 
+          flex flex-row
           lg:w-[40%] lg:h-full lg:flex-col
         `}
         >
@@ -27,7 +26,6 @@ function Skill() {
             className={`
               w-[50%] h-full
               lg:w-full lg:h-[50%]
-              border-2
             `}
           >
             <BackEndSkills/>
@@ -36,7 +34,6 @@ function Skill() {
             className={`
               w-[50%] h-full
               lg:w-full lg:h-[50%]
-              border-2
             `}
           >
             <Collaborations/>

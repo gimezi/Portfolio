@@ -1,6 +1,3 @@
-
-
-
 type skillType = {
     name: string,
     image:string,
@@ -62,8 +59,8 @@ function FrontEndSkills() {
         },
     ]
     return(
-        <div className="w-full h-full">
-            FrontEnd
+        <div className="w-[98%] h-[98%] bg-gray-100/50 rounded">
+            <p className="text-lg p-3" style={{fontFamily:'SEBANG_Gothic_Bold'}}>FrontEnd</p>
         </div>
     )
 }
